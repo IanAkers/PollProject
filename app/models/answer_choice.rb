@@ -1,4 +1,8 @@
-class AnswerChoice
+class AnswerChoice < ActiveRecord::Base
+
+  validates :title, :presence => true
+  validates :author_user_id, :presence => true
+
   belongs_to(
     :question,
     :class_name => "Question",
