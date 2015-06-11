@@ -26,6 +26,12 @@ class Response < ActiveRecord::Base
     :source => :question
   )
 
+  has_one(
+    :poll,
+    :through => :question,
+    :source => :poll
+  )
+
   def sibling_responses
     if self.id.nil?
       self.question.responses
