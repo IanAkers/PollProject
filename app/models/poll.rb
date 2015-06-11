@@ -1,7 +1,7 @@
-class Poll
+class Poll < ActiveRecord::Base
 
-  validates :question_text, :presence => true
-  validates :poll_id, :presence => true
+  validate :title, :presence => true
+  validate :author_user_id, :presence => true
 
   belongs_to(
     :author,
@@ -11,10 +11,10 @@ class Poll
   )
 
   has_many(
-  :questions,
-  :class_name => "Question",
-  :foreign_key => :poll_id,
-  :primary_key => :id
+    :questions,
+    :class_name => "Question",
+    :foreign_key => :poll_id,
+    :primary_key => :id
   )
 
 end
